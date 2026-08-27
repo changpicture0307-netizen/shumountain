@@ -7,6 +7,7 @@
 // gpx: GPX 軌跡檔名，對應 images/<slug>/track.gpx
 // support: 留守人員，陣列
 // groupPhoto: 人員合照檔名，會顯示在路線頁最上方，對應 images/<slug>/ 資料夾內的檔案
+// startPoint: 起溯點／停車點的地圖連結（例如 Google Maps 網址）
 
 const ROUTES = [
   {
@@ -16,6 +17,7 @@ const ROUTES = [
     members: ["劉承越", "張智勳", "黃元泓", "范文浩", "劉玟希", "林芷愉", "王馨儀", "黃莉容", "蔡采之", "徐永鴻", "蔡曉亞"],
     support: ["蔡允瑄"],
     groupPhoto: "group-photo.jpg",
+    startPoint: "",
     difficulty: "",
     log: "08:00 世新大學集合\n10:01 停車場換裝\n10:53 拍大合照，再檢查一次裝備準備出發\n11:00 整裝完畢出發\n11:26 部隊下大斜坡結束準備進入溪谷到姐妹瀑布瀑頂\n12:24 黃教練肚子餓了，智勳跟黃教練往前找可以吃飯的地方\n12:30 找到還可以的地方，先煮水跟抹茶給大家\n12:37 達波抵達\n12:40 大部隊抵達\n13:45 出發繼續前行\n14:45 曉亞手受傷，停止前進先處理傷口\n14:41 抵達平瀬，右岸有沙洲營地，約2T*2\n14:49 抵達瀑布－雲森瀑布\n15:52 回程\n16:28 全員抵達停車場換裝\n17:14 換裝完成去吃飯，當地人推薦有木里觀光土雞城\n\n重要地標 (TWD97)：\n大斜坡結束點 296589/2748259\n午餐地 296909/2747877\n平瀬 297115/2747569\n瀑布 297107/2747507",
     mapImage: "",
@@ -29,6 +31,7 @@ const ROUTES = [
     members: [],
     support: [],
     groupPhoto: "",
+    startPoint: "",
     difficulty: "",
     log: "",
     mapImage: "",
@@ -38,12 +41,13 @@ const ROUTES = [
   {
     slug: "huliao-tan",
     name: "虎寮潭",
-    date: "",
-    members: [],
+    date: "2025/03/23",
+    members: ["承越", "允瑄", "元泓", "莉容", "芳瑜", "Stacy", "馨儀", "芷愉", "詠鈞"],
     support: [],
     groupPhoto: "",
+    startPoint: "https://maps.app.goo.gl/TDoTJ3M7Taqci86J8?g_st=ifm",
     difficulty: "",
-    log: "",
+    log: "08:21 中和集合出發\n09:45 起溯點整裝完畢，準備出發\n10:38 過地形，先鋒馨儀、元泓\n11:55 瀑布底休息吃中餐\n12:45 過地形，先鋒攀登瀑布上方架設固定點（sling＋上鎖勾環），以進行上方確保（使用ATC）\n13:28 爬上斜坡再垂降下來\n15:00 過地形：馨儀帶主繩先鋒攀登瀑布上方進行人身確保，達波隨後拉繩上去架設固定點。固定點架設完畢後，其他隊員使用普魯士上升（或上升器traxion或Jumar）\n16:25 出溪谷\n16:42 走古道\n18:13 換裝完畢，開車離開\n19:05 元泓車抵達臺大停車場",
     mapImage: "",
     gpx: "",
     photos: []
@@ -55,6 +59,7 @@ const ROUTES = [
     members: [],
     support: [],
     groupPhoto: "",
+    startPoint: "",
     difficulty: "",
     log: "",
     mapImage: "",
@@ -68,6 +73,7 @@ const ROUTES = [
     members: [],
     support: [],
     groupPhoto: "",
+    startPoint: "",
     difficulty: "",
     log: "",
     mapImage: "",
@@ -81,6 +87,7 @@ const ROUTES = [
     members: [],
     support: [],
     groupPhoto: "",
+    startPoint: "",
     difficulty: "",
     log: "",
     mapImage: "",
@@ -94,6 +101,7 @@ const ROUTES = [
     members: [],
     support: [],
     groupPhoto: "",
+    startPoint: "",
     difficulty: "",
     log: "",
     mapImage: "",
@@ -107,6 +115,7 @@ const ROUTES = [
     members: [],
     support: [],
     groupPhoto: "",
+    startPoint: "",
     difficulty: "",
     log: "",
     mapImage: "",

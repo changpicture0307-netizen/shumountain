@@ -258,6 +258,16 @@ a { color: inherit; }
 
 .info-chip.empty { color: var(--ink-faint); font-style: italic; }
 
+a.info-chip {
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+a.info-chip:hover {
+  background: var(--paper-line);
+}
+
 section.block {
   margin: 40px 0;
 }

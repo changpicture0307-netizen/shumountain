@@ -21,6 +21,7 @@ images/<slug>/        每條路線的圖片放這裡
   date: "2024/07",
   members: ["小明", "阿華"],
   difficulty: "新手",
+  startPoint: "https://maps.app.goo.gl/xxxxxx",
   log: "水量偏大，第二個深潭要注意流速。",
   mapImage: "route-map.jpg",
   gpx: "track.gpx",
@@ -29,6 +30,7 @@ images/<slug>/        每條路線的圖片放這裡
 ```
 
 - 沒有的欄位留空字串 `""` 或空陣列 `[]`，頁面會自動顯示「尚無紀錄」。
+- `startPoint` 填 Google Maps（或其他地圖）連結，路線頁會顯示成一個可以點開的「起溯點」標籤。
 - 首頁的圓形印章圖示，只有真的有資料的欄位才會標亮（人員／照片／紀錄／溯行圖／時間）。
 
 ## 怎麼放圖片

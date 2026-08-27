@@ -60,6 +60,10 @@
       ? `<div class="info-chip"><span class="k">難度</span>${route.difficulty}</div>`
       : "";
 
+    const startPointChip = route.startPoint
+      ? `<a class="info-chip" href="${route.startPoint}" target="_blank" rel="noopener"><span class="k">起溯點</span>開啟地圖 ↗</a>`
+      : "";
+
     const membersBlock = (route.members && route.members.length)
       ? `<div class="members-list">${route.members.map(m => `<span>${m}</span>`).join("")}</div>`
       : `<div class="placeholder-box">尚無人員紀錄</div>`;
@@ -97,6 +101,7 @@
       <div class="info-strip">
         ${dateChip}
         ${diffChip}
+        ${startPointChip}
       </div>
 
       <section class="block">
