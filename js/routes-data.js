@@ -136,9 +136,21 @@ const ROUTES = [
   },
   {
     slug: "gupoliao-creek",
-    name: "姑婆寮溪",
+    name: "姑婆寮溪左股",
     trips: [
-      { date: "", members: [], support: [], groupPhoto: "", startPoint: "", difficulty: "", mapImage: "", gpx: "", entries: [] }
+      {
+        date: "",
+        members: [],
+        support: [],
+        groupPhoto: "",
+        startPoint: "",
+        difficulty: "",
+        mapImage: "route-map.jpg",
+        gpx: "",
+        entries: [
+          { type: "text", text: "說明：智勳在當兵沒去到\n只知道馨儀把達波的刀弄丟了" }
+        ]
+      }
     ]
   },
   {
