@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>更新日誌 · 溯溪紀錄</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg class="topo-bg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+  <defs>
+    <pattern id="topo" width="420" height="420" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#56635a" stroke-width="1">
+        <path d="M-20 40 Q 90 -10, 200 40 T 440 40" />
+        <path d="M-20 90 Q 90 40, 200 90 T 440 90" />
+        <path d="M-20 140 Q 90 90, 200 140 T 440 140" />
+        <path d="M-20 200 Q 110 260, 220 200 T 460 200" />
+        <path d="M-20 250 Q 110 310, 220 250 T 460 250" />
+        <path d="M-20 300 Q 110 360, 220 300 T 460 300" />
+        <path d="M-40 360 Q 80 400, 200 360 T 440 360" />
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#topo)" />
+</svg>
+
+<div class="page">
+  <a class="back-link" href="index.html">‹ 返回路線列表</a>
+
+  <header class="masthead">
+    <div class="eyebrow">CHANGELOG · 更新日誌</div>
+    <h1>更新日誌</h1>
+    <p class="sub">記錄這個網站每一次更新了什麼</p>
+  </header>
+
+  <div class="divider"></div>
+
+  <div class="timeline" id="timeline"></div>
+
+  <footer class="note">溯溪紀錄本</footer>
+</div>
+
+<script src="js/changelog-data.js"></script>
+<script>
+  const timeline = document.getElementById("timeline");
+
+  CHANGELOG.forEach(entry => {
+    const notesHtml = (entry.notes && entry.notes.length)
+      ? `<ul>${entry.notes.map(n => `<li>${n}</li>`).join("")}</ul>`
+      : "";
+
+    const item = document.createElement("div");
+    item.className = "timeline-item";
+    item.innerHTML = `
+      <div class="timeline-date">${entry.date}</div>
+      <div class="timeline-body">
+        <h3>${entry.title}</h3>
+        ${notesHtml}
+      </div>
+    `;
+    timeline.appendChild(item);
+  });
+</script>
+
+</body>
+</html>
