@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>溯溪紀錄</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg class="topo-bg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+  <defs>
+    <pattern id="topo" width="420" height="420" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#56635a" stroke-width="1">
+        <path d="M-20 40 Q 90 -10, 200 40 T 440 40" />
+        <path d="M-20 90 Q 90 40, 200 90 T 440 90" />
+        <path d="M-20 140 Q 90 90, 200 140 T 440 140" />
+        <path d="M-20 200 Q 110 260, 220 200 T 460 200" />
+        <path d="M-20 250 Q 110 310, 220 250 T 460 250" />
+        <path d="M-20 300 Q 110 360, 220 300 T 460 300" />
+        <path d="M-40 360 Q 80 400, 200 360 T 440 360" />
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#topo)" />
+</svg>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow">FIELD LOG · 溯行紀錄本</div>
+    <h1>溯溪紀錄</h1>
+    <p class="sub">整理路線、時間、人員、照片與溯行圖的野外筆記</p>
+  </header>
+
+  <div class="divider"></div>
+
+  <div class="stamp-grid" id="stampGrid"></div>
+
+  <footer class="note">已收錄 <span id="routeCount"></span> 條路線 · 點選路線查看詳細紀錄</footer>
+
+</div>
+
+<script src="js/routes-data.js"></script>
+<script>
+  const grid = document.getElementById("stampGrid");
+
+  ROUTES.forEach((route, i) => {
+    const no = String(i + 1).padStart(2, "0");
+    const iconsHtml = FIELD_META.map(f => {
+      const filled = hasField(route, f.key);
+      return `<span class="field-icon ${filled ? "filled" : ""}">${f.label}</span>`;
+    }).join("");
+
+    const card = document.createElement("a");
+    card.className = "stamp-card";
+    card.href = `route.html?r=${route.slug}`;
+    card.innerHTML = `
+      <div class="stamp-ring">溯溪<br>紀錄</div>
+      <div class="route-no">NO. ${no}</div>
+      <h2>${route.name}</h2>
+      <div class="field-icons">${iconsHtml}</div>
+    `;
+    grid.appendChild(card);
+  });
+
+  document.getElementById("routeCount").textContent = ROUTES.length;
+</script>
+
+</body>
+</html>
