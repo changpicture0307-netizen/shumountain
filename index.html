@@ -52,11 +52,14 @@
       return `<span class="field-icon ${filled ? "filled" : ""}">${f.label}</span>`;
     }).join("");
 
+    const visitCount = route.trips.length;
+    const ringText = visitCount > 1 ? `去了<br>${visitCount} 次` : "溯溪<br>紀錄";
+
     const card = document.createElement("a");
     card.className = "stamp-card";
     card.href = `route.html?r=${route.slug}`;
     card.innerHTML = `
-      <div class="stamp-ring">溯溪<br>紀錄</div>
+      <div class="stamp-ring">${ringText}</div>
       <div class="route-no">NO. ${no}</div>
       <h2>${route.name}</h2>
       <div class="field-icons">${iconsHtml}</div>

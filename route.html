@@ -29,7 +29,7 @@
   <a class="back-link" href="index.html">‹ 返回路線列表</a>
 
   <div id="content">
-    <p style="font-family:'IBM Plex Mono',monospace; color:var(--ink-faint);">找不到這條路線。</p>
+    <p style="font-family:'Lihsianti Mono','IBM Plex Mono',monospace; color:var(--ink-faint);">找不到這條路線。</p>
   </div>
 
   <footer class="note">溯溪紀錄本</footer>
@@ -42,53 +42,87 @@
   const route = getRoute(slug);
   const content = document.getElementById("content");
 
-  if (route) {
-    document.title = route.name + " · 溯溪紀錄";
+  // 選第幾次的 trip，網址可以帶 &t=2 直接跳到第二次；預設顯示最新一次
+  let tripIndex = route ? route.trips.length - 1 : 0;
+  const requestedTrip = parseInt(params.get("t"), 10);
+  if (route && requestedTrip >= 1 && requestedTrip <= route.trips.length) {
+    tripIndex = requestedTrip - 1;
+  }
 
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  function renderTrip() {
+    const trip = route.trips[tripIndex];
     const idx = ROUTES.indexOf(route);
     const no = String(idx + 1).padStart(2, "0");
+    const tripFolder = `images/${route.slug}/trip${tripIndex + 1}`;
 
-    const groupPhotoBlock = route.groupPhoto
-      ? `<figure class="group-photo"><img src="images/${route.slug}/${route.groupPhoto}" alt="${route.name} 人員合照"></figure>`
-      : `<div class="placeholder-box group-photo-placeholder">尚無人員合照<br>將照片放入 images/${route.slug}/group-photo.jpg 後於 routes-data.js 把 groupPhoto 填成 "group-photo.jpg"</div>`;
+    // ---- 多次造訪的分頁切換 ----
+    let tabsHtml = "";
+    if (route.trips.length > 1) {
+      tabsHtml = `<div class="trip-tabs">` + route.trips.map((t, i) => {
+        const label = t.date ? `第 ${i + 1} 次 · ${t.date}` : `第 ${i + 1} 次`;
+        const active = i === tripIndex ? "active" : "";
+        return `<button class="trip-tab ${active}" data-trip="${i}">${label}</button>`;
+      }).join("") + `</div>`;
+    }
 
-    const dateChip = route.date
-      ? `<div class="info-chip"><span class="k">時間</span>${route.date}</div>`
+    // ---- 合照 ----
+    const groupPhotoBlock = trip.groupPhoto
+      ? `<figure class="group-photo"><img src="${tripFolder}/${trip.groupPhoto}" alt="${route.name} 人員合照"></figure>`
+      : `<div class="placeholder-box group-photo-placeholder">尚無人員合照<br>將照片放入 ${tripFolder}/group-photo.jpg 後於 routes-data.js 把這次 trip 的 groupPhoto 填成 "group-photo.jpg"</div>`;
+
+    // ---- 資訊列 ----
+    const dateChip = trip.date
+      ? `<div class="info-chip"><span class="k">時間</span>${trip.date}</div>`
       : `<div class="info-chip empty"><span class="k">時間</span>尚無紀錄</div>`;
 
-    const diffChip = route.difficulty
-      ? `<div class="info-chip"><span class="k">難度</span>${route.difficulty}</div>`
+    const diffChip = trip.difficulty
+      ? `<div class="info-chip"><span class="k">難度</span>${trip.difficulty}</div>`
       : "";
 
-    const startPointChip = route.startPoint
-      ? `<a class="info-chip" href="${route.startPoint}" target="_blank" rel="noopener"><span class="k">起溯點</span>開啟地圖 ↗</a>`
+    const startPointChip = trip.startPoint
+      ? `<a class="info-chip" href="${trip.startPoint}" target="_blank" rel="noopener"><span class="k">起溯點</span>開啟地圖 ↗</a>`
       : "";
 
-    const membersBlock = (route.members && route.members.length)
-      ? `<div class="members-list">${route.members.map(m => `<span>${m}</span>`).join("")}</div>`
+    // ---- 人員 ----
+    const membersBlock = (trip.members && trip.members.length)
+      ? `<div class="members-list">${trip.members.map(m => `<span>${m}</span>`).join("")}</div>`
       : `<div class="placeholder-box">尚無人員紀錄</div>`;
 
-    const supportBlock = (route.support && route.support.length)
-      ? `<div class="support-row"><span class="support-label">留守</span><div class="members-list">${route.support.map(m => `<span>${m}</span>`).join("")}</div></div>`
+    const supportBlock = (trip.support && trip.support.length)
+      ? `<div class="support-row"><span class="support-label">留守</span><div class="members-list">${trip.support.map(m => `<span>${m}</span>`).join("")}</div></div>`
       : "";
 
-    const mapBlock = route.mapImage
-      ? `<div class="map-frame"><img src="images/${route.slug}/${route.mapImage}" alt="${route.name} 溯行圖"></div>`
-      : `<div class="placeholder-box">尚無溯行圖<br>將圖片放入 images/${route.slug}/route-map.jpg 後於 routes-data.js 填入檔名</div>`;
+    // ---- 溯行圖 ----
+    const mapBlock = trip.mapImage
+      ? `<div class="map-frame"><img src="${tripFolder}/${trip.mapImage}" alt="${route.name} 溯行圖"></div>`
+      : `<div class="placeholder-box">尚無溯行圖<br>將圖片放入 ${tripFolder}/route-map.jpg 後於 routes-data.js 把這次 trip 的 mapImage 填成 "route-map.jpg"</div>`;
 
-    const logBlock = route.log
-      ? `<p class="log-text">${route.log.replace(/\n/g, "<br>")}</p>`
-      : `<div class="placeholder-box">尚無文字紀錄</div>`;
+    // ---- 紀錄（文字＋照片混排） ----
+    let entriesBlock = "";
+    if (trip.entries && trip.entries.length) {
+      entriesBlock = `<div class="entry-flow">` + trip.entries.map((e, i) => {
+        if (e.type === "photo") {
+          const rotClass = i % 3 === 0 ? "rot-a" : (i % 3 === 1 ? "rot-b" : "rot-c");
+          const caption = e.caption ? `<figcaption>${escapeHtml(e.caption)}</figcaption>` : "";
+          return `<figure class="entry-photo ${rotClass}"><img src="${tripFolder}/photos/${e.src}" alt="${route.name}">${caption}</figure>`;
+        }
+        return `<p class="entry-text">${escapeHtml(e.text).replace(/\n/g, "<br>")}</p>`;
+      }).join("") + `</div>`;
+    } else {
+      entriesBlock = `<div class="placeholder-box">尚無文字紀錄或照片</div>`;
+    }
 
-    const photosBlock = (route.photos && route.photos.length)
-      ? `<div class="photo-grid">${route.photos.map(p =>
-          `<figure><img src="images/${route.slug}/photos/${p}" alt="${route.name}"></figure>`
-        ).join("")}</div>`
-      : `<div class="placeholder-box">尚無照片<br>將照片放入 images/${route.slug}/photos/ 後於 routes-data.js 填入檔名</div>`;
-
-    const gpxBlock = route.gpx
-      ? `<a class="gpx-download" href="images/${route.slug}/${route.gpx}" download>⬇ 下載 GPX 軌跡（${route.gpx}）</a>`
-      : `<div class="placeholder-box">尚無 GPX 檔<br>將檔案放入 images/${route.slug}/track.gpx 後於 routes-data.js 填入檔名</div>`;
+    // ---- GPX ----
+    const gpxBlock = trip.gpx
+      ? `<a class="gpx-download" href="${tripFolder}/${trip.gpx}" download>⬇ 下載 GPX 軌跡（${trip.gpx}）</a>`
+      : `<div class="placeholder-box">尚無 GPX 檔<br>將檔案放入 ${tripFolder}/track.gpx 後於 routes-data.js 把這次 trip 的 gpx 填成 "track.gpx"</div>`;
 
     content.innerHTML = `
       ${groupPhotoBlock}
@@ -97,6 +131,8 @@
         <div class="route-no">NO. ${no}</div>
         <h1>${route.name}</h1>
       </div>
+
+      ${tabsHtml}
 
       <div class="info-strip">
         ${dateChip}
@@ -117,12 +153,7 @@
 
       <section class="block">
         <h3>紀錄</h3>
-        ${logBlock}
-      </section>
-
-      <section class="block">
-        <h3>照片</h3>
-        ${photosBlock}
+        ${entriesBlock}
       </section>
 
       <section class="block">
@@ -130,6 +161,21 @@
         ${gpxBlock}
       </section>
     `;
+
+    if (route.trips.length > 1) {
+      document.querySelectorAll(".trip-tab").forEach(btn => {
+        btn.addEventListener("click", () => {
+          tripIndex = parseInt(btn.dataset.trip, 10);
+          renderTrip();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    }
+  }
+
+  if (route) {
+    document.title = route.name + " · 溯溪紀錄";
+    renderTrip();
   }
 </script>
 
