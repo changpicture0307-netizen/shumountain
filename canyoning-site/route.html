@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>路線紀錄</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg class="topo-bg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+  <defs>
+    <pattern id="topo" width="420" height="420" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#56635a" stroke-width="1">
+        <path d="M-20 40 Q 90 -10, 200 40 T 440 40" />
+        <path d="M-20 90 Q 90 40, 200 90 T 440 90" />
+        <path d="M-20 140 Q 90 90, 200 140 T 440 140" />
+        <path d="M-20 200 Q 110 260, 220 200 T 460 200" />
+        <path d="M-20 250 Q 110 310, 220 250 T 460 250" />
+        <path d="M-20 300 Q 110 360, 220 300 T 460 300" />
+        <path d="M-40 360 Q 80 400, 200 360 T 440 360" />
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#topo)" />
+</svg>
+
+<div class="page">
+  <a class="back-link" href="index.html">‹ 返回路線列表</a>
+
+  <div id="content">
+    <p style="font-family:'IBM Plex Mono',monospace; color:var(--ink-faint);">找不到這條路線。</p>
+  </div>
+
+  <footer class="note">溯溪紀錄本</footer>
+</div>
+
+<script src="js/routes-data.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const slug = params.get("r");
+  const route = getRoute(slug);
+  const content = document.getElementById("content");
+
+  if (route) {
+    document.title = route.name + " · 溯溪紀錄";
+
+    const idx = ROUTES.indexOf(route);
+    const no = String(idx + 1).padStart(2, "0");
+
+    const groupPhotoBlock = route.groupPhoto
+      ? `<figure class="group-photo"><img src="images/${route.slug}/${route.groupPhoto}" alt="${route.name} 人員合照"></figure>`
+      : `<div class="placeholder-box group-photo-placeholder">尚無人員合照<br>將照片放入 images/${route.slug}/group-photo.jpg 後於 routes-data.js 把 groupPhoto 填成 "group-photo.jpg"</div>`;
+
+    const dateChip = route.date
+      ? `<div class="info-chip"><span class="k">時間</span>${route.date}</div>`
+      : `<div class="info-chip empty"><span class="k">時間</span>尚無紀錄</div>`;
+
+    const diffChip = route.difficulty
+      ? `<div class="info-chip"><span class="k">難度</span>${route.difficulty}</div>`
+      : "";
+
+    const membersBlock = (route.members && route.members.length)
+      ? `<div class="members-list">${route.members.map(m => `<span>${m}</span>`).join("")}</div>`
+      : `<div class="placeholder-box">尚無人員紀錄</div>`;
+
+    const supportBlock = (route.support && route.support.length)
+      ? `<div class="support-row"><span class="support-label">留守</span><div class="members-list">${route.support.map(m => `<span>${m}</span>`).join("")}</div></div>`
+      : "";
+
+    const mapBlock = route.mapImage
+      ? `<div class="map-frame"><img src="images/${route.slug}/${route.mapImage}" alt="${route.name} 溯行圖"></div>`
+      : `<div class="placeholder-box">尚無溯行圖<br>將圖片放入 images/${route.slug}/route-map.jpg 後於 routes-data.js 填入檔名</div>`;
+
+    const logBlock = route.log
+      ? `<p class="log-text">${route.log.replace(/\n/g, "<br>")}</p>`
+      : `<div class="placeholder-box">尚無文字紀錄</div>`;
+
+    const photosBlock = (route.photos && route.photos.length)
+      ? `<div class="photo-grid">${route.photos.map(p =>
+          `<figure><img src="images/${route.slug}/photos/${p}" alt="${route.name}"></figure>`
+        ).join("")}</div>`
+      : `<div class="placeholder-box">尚無照片<br>將照片放入 images/${route.slug}/photos/ 後於 routes-data.js 填入檔名</div>`;
+
+    const gpxBlock = route.gpx
+      ? `<a class="gpx-download" href="images/${route.slug}/${route.gpx}" download>⬇ 下載 GPX 軌跡（${route.gpx}）</a>`
+      : `<div class="placeholder-box">尚無 GPX 檔<br>將檔案放入 images/${route.slug}/track.gpx 後於 routes-data.js 填入檔名</div>`;
+
+    content.innerHTML = `
+      ${groupPhotoBlock}
+
+      <div class="route-head">
+        <div class="route-no">NO. ${no}</div>
+        <h1>${route.name}</h1>
+      </div>
+
+      <div class="info-strip">
+        ${dateChip}
+        ${diffChip}
+      </div>
+
+      <section class="block">
+        <h3>人員</h3>
+        ${membersBlock}
+        ${supportBlock}
+      </section>
+
+      <section class="block">
+        <h3>溯行圖</h3>
+        ${mapBlock}
+      </section>
+
+      <section class="block">
+        <h3>紀錄</h3>
+        ${logBlock}
+      </section>
+
+      <section class="block">
+        <h3>照片</h3>
+        ${photosBlock}
+      </section>
+
+      <section class="block">
+        <h3>GPX 軌跡下載</h3>
+        ${gpxBlock}
+      </section>
+    `;
+  }
+</script>
+
+</body>
+</html>
