@@ -144,7 +144,31 @@ const ROUTES = [
     slug: "fengmei-creek",
     name: "風美溪",
     trips: [
-      { date: "", members: [], support: [], groupPhoto: "", startPoint: "", difficulty: "", mapImage: "", gpx: "", entries: [] }
+      {
+        date: "2026/07/25",
+        members: ["黃元泓", "張智勳", "林育陞", "林芷瑜"],
+        support: [],
+        groupPhoto: "",
+        startPoint: "",
+        difficulty: "",
+        mapImage: "",
+        gpx: "",
+        entries: [
+          { type: "photo", src: "1.jpg" },
+          { type: "photo", src: "2.jpg" },
+          { type: "photo", src: "3.jpg" },
+          { type: "photo", src: "4.jpg" },
+          { type: "photo", src: "5.jpg" },
+          { type: "photo", src: "6.jpg" },
+          { type: "photo", src: "7.jpg" },
+          { type: "photo", src: "8.jpg" },
+          { type: "photo", src: "9.jpg" },
+          { type: "photo", src: "10.jpg" },
+          { type: "photo", src: "11.jpg" },
+          { type: "photo", src: "12.jpg" },
+          { type: "photo", src: "13.jpg" }
+        ]
+      }
     ]
   },
   {
