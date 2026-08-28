@@ -10,6 +10,11 @@
 const CHANGELOG = [
   {
     date: "2026/08/27",
+    title: "虎寮潭新增照片",
+    notes: ["補上 7 張現場照片，放在紀錄最後面"]
+  },
+  {
+    date: "2026/08/27",
     title: "中坑溪雲森瀑布新增 GPX",
     notes: [
       "新增 GPX 軌跡下載",

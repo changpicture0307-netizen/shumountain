@@ -108,7 +108,14 @@ const ROUTES = [
           { type: "text", text: "最佳攻擊手：馨儀" },
           { type: "photo", src: "23.jpg" },
           { type: "photo", src: "24.jpg" },
-          { type: "text", text: "16:25 出溪谷\n16:42 走古道\n18:13 換裝完畢，開車離開\n19:05 元泓車抵達臺大停車場" }
+          { type: "text", text: "16:25 出溪谷\n16:42 走古道\n18:13 換裝完畢，開車離開\n19:05 元泓車抵達臺大停車場" },
+          { type: "photo", src: "25.jpg" },
+          { type: "photo", src: "26.jpg" },
+          { type: "photo", src: "27.jpg" },
+          { type: "photo", src: "28.jpg" },
+          { type: "photo", src: "29.jpg" },
+          { type: "photo", src: "30.jpg" },
+          { type: "photo", src: "31.jpg" }
         ]
       }
     ]
