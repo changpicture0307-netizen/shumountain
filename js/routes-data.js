@@ -130,7 +130,25 @@ const ROUTES = [
     slug: "toucian-creek",
     name: "頭前溪",
     trips: [
-      { date: "", members: [], support: [], groupPhoto: "", startPoint: "", difficulty: "", mapImage: "", gpx: "", entries: [] }
+      {
+        date: "2026/03/08",
+        members: ["張智勳", "黃元泓", "劉承越"],
+        support: [],
+        groupPhoto: "",
+        startPoint: "",
+        difficulty: "",
+        mapImage: "",
+        gpx: "",
+        entries: [
+          { type: "text", text: "智勳生日隔天開開心心溯溪\n09:14 起溯" },
+          { type: "photo", src: "1.jpg" },
+          { type: "photo", src: "2.jpg" },
+          { type: "photo", src: "3.jpg" },
+          { type: "text", text: "10:13 智勳砍到腳撤退\n下山去了醫院、浩宇家農場、泡溫泉還有最好吃的小漁村\n下次有機會再來" },
+          { type: "photo", src: "4.jpg" },
+          { type: "photo", src: "5.jpg" }
+        ]
+      }
     ]
   },
   {
@@ -194,7 +212,25 @@ const ROUTES = [
     slug: "laomei-creek",
     name: "老梅溪",
     trips: [
-      { date: "", members: [], support: [], groupPhoto: "", startPoint: "", difficulty: "", mapImage: "", gpx: "", entries: [] }
+      {
+        date: "",
+        members: [],
+        support: [],
+        groupPhoto: "",
+        startPoint: "",
+        difficulty: "",
+        mapImage: "",
+        gpx: "",
+        entries: [
+          { type: "photo", src: "1.jpg" },
+          { type: "photo", src: "2.jpg" },
+          { type: "photo", src: "3.jpg" },
+          { type: "photo", src: "4.jpg" },
+          { type: "photo", src: "5.jpg" },
+          { type: "photo", src: "6.jpg" },
+          { type: "photo", src: "7.jpg" }
+        ]
+      }
     ]
   }
 ];
