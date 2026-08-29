@@ -350,30 +350,44 @@ section.block h3::before {
   box-shadow: 0 1px 3px rgba(39,56,50,0.06);
 }
 
-.entry-photo {
-  margin: 4px auto;
-  max-width: 480px;
-  background: #fff;
-  padding: 8px 8px 14px;
-  border: 1px solid var(--paper-line);
-  box-shadow: 0 4px 12px rgba(39,56,50,0.16);
+.entry-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 4px 0;
 }
 
-.entry-photo.rot-a { transform: rotate(-1.1deg); }
-.entry-photo.rot-b { transform: rotate(0.9deg); }
-.entry-photo.rot-c { transform: rotate(-0.4deg); }
+.grid-photo {
+  margin: 0;
+  background: #fff;
+  padding: 6px 6px 10px;
+  border: 1px solid var(--paper-line);
+  box-shadow: 0 3px 8px rgba(39,56,50,0.14);
+}
 
-.entry-photo img {
+.grid-photo.rot-a { transform: rotate(-1.1deg); }
+.grid-photo.rot-b { transform: rotate(0.9deg); }
+.grid-photo.rot-c { transform: rotate(-0.4deg); }
+
+.grid-photo img {
   width: 100%;
   display: block;
+  aspect-ratio: 4/3;
+  object-fit: cover;
 }
 
-.entry-photo figcaption {
-  margin-top: 8px;
-  font-size: 14px;
+.grid-photo figcaption {
+  margin-top: 6px;
+  font-size: 12px;
   color: var(--ink-soft);
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.4;
+}
+
+@media (max-width: 560px) {
+  .entry-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* ---------- 多次造訪的分頁 ---------- */

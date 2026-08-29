@@ -104,17 +104,34 @@
       ? `<div class="map-frame"><img src="${tripFolder}/${trip.mapImage}" alt="${route.name} 溯行圖"></div>`
       : `<div class="placeholder-box">尚無溯行圖<br>將圖片放入 ${tripFolder}/route-map.jpg 後於 routes-data.js 把這次 trip 的 mapImage 填成 "route-map.jpg"</div>`;
 
-    // ---- 紀錄（文字＋照片混排） ----
+    // ---- 紀錄（文字＋照片混排，連續的照片會排成一列一列，不會一張一張拖很長） ----
     let entriesBlock = "";
     if (trip.entries && trip.entries.length) {
-      entriesBlock = `<div class="entry-flow">` + trip.entries.map((e, i) => {
-        if (e.type === "photo") {
+      const blocks = [];
+      let photoRun = [];
+
+      const flushPhotoRun = () => {
+        if (!photoRun.length) return;
+        const figuresHtml = photoRun.map((e, i) => {
           const rotClass = i % 3 === 0 ? "rot-a" : (i % 3 === 1 ? "rot-b" : "rot-c");
           const caption = e.caption ? `<figcaption>${escapeHtml(e.caption)}</figcaption>` : "";
-          return `<figure class="entry-photo ${rotClass}"><img src="${tripFolder}/photos/${e.src}" alt="${route.name}">${caption}</figure>`;
+          return `<figure class="grid-photo ${rotClass}"><img src="${tripFolder}/photos/${e.src}" alt="${route.name}">${caption}</figure>`;
+        }).join("");
+        blocks.push(`<div class="entry-photo-grid">${figuresHtml}</div>`);
+        photoRun = [];
+      };
+
+      trip.entries.forEach(e => {
+        if (e.type === "photo") {
+          photoRun.push(e);
+        } else {
+          flushPhotoRun();
+          blocks.push(`<p class="entry-text">${escapeHtml(e.text).replace(/\n/g, "<br>")}</p>`);
         }
-        return `<p class="entry-text">${escapeHtml(e.text).replace(/\n/g, "<br>")}</p>`;
-      }).join("") + `</div>`;
+      });
+      flushPhotoRun();
+
+      entriesBlock = `<div class="entry-flow">${blocks.join("")}</div>`;
     } else {
       entriesBlock = `<div class="placeholder-box">尚無文字紀錄或照片</div>`;
     }

@@ -56,7 +56,26 @@ const ROUTES = [
     slug: "fushi-creek",
     name: "富士溪",
     trips: [
-      { date: "", members: [], support: [], groupPhoto: "", startPoint: "", difficulty: "", mapImage: "", gpx: "", entries: [] }
+      {
+        date: "2024/09/08",
+        members: ["張智勳", "劉承越", "蔡允宣", "黃元泓", "文集均", "張展華", "林辰潔", "黃莉容"],
+        support: [],
+        groupPhoto: "group-photo.jpg",
+        startPoint: "",
+        difficulty: "",
+        mapImage: "",
+        gpx: "track.gpx",
+        entries: [
+          { type: "photo", src: "1.jpg" },
+          { type: "photo", src: "2.jpg" },
+          { type: "photo", src: "3.jpg" },
+          { type: "photo", src: "4.jpg" },
+          { type: "photo", src: "5.jpg" },
+          { type: "photo", src: "6.jpg" },
+          { type: "photo", src: "7.jpg" },
+          { type: "photo", src: "8.jpg" }
+        ]
+      }
     ]
   },
   {
