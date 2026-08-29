@@ -112,12 +112,13 @@
 
       const flushPhotoRun = () => {
         if (!photoRun.length) return;
+        const cols = Math.min(photoRun.length, 3);
         const figuresHtml = photoRun.map((e, i) => {
           const rotClass = i % 3 === 0 ? "rot-a" : (i % 3 === 1 ? "rot-b" : "rot-c");
           const caption = e.caption ? `<figcaption>${escapeHtml(e.caption)}</figcaption>` : "";
           return `<figure class="grid-photo ${rotClass}"><img src="${tripFolder}/photos/${e.src}" alt="${route.name}">${caption}</figure>`;
         }).join("");
-        blocks.push(`<div class="entry-photo-grid">${figuresHtml}</div>`);
+        blocks.push(`<div class="entry-photo-grid" style="--cols: ${cols};">${figuresHtml}</div>`);
         photoRun = [];
       };
 

@@ -352,7 +352,7 @@ section.block h3::before {
 
 .entry-photo-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(var(--cols, 3), 1fr);
   gap: 12px;
   margin: 4px 0;
 }
@@ -372,8 +372,7 @@ section.block h3::before {
 .grid-photo img {
   width: 100%;
   display: block;
-  aspect-ratio: 4/3;
-  object-fit: cover;
+  height: auto;
 }
 
 .grid-photo figcaption {
@@ -386,7 +385,7 @@ section.block h3::before {
 
 @media (max-width: 560px) {
   .entry-photo-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(min(var(--cols, 3), 2), 1fr);
   }
 }
 
