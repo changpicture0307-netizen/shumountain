@@ -172,9 +172,27 @@ const ROUTES = [
   },
   {
     slug: "jiajiuliao-creek",
-    name: "加九寮溪",
+    name: "加九寮溪左股溯源高腰山",
     trips: [
-      { date: "", members: [], support: [], groupPhoto: "", startPoint: "", difficulty: "", mapImage: "", gpx: "", entries: [] }
+      {
+        date: "",
+        members: ["張智勳", "劉承越", "陳裕豪"],
+        support: [],
+        groupPhoto: "group-photo.jpg",
+        startPoint: "",
+        difficulty: "",
+        mapImage: "route-map.jpg",
+        gpx: "",
+        entries: [
+          { type: "text", text: "沒紀錄，有夠累，達波登山杖忘在路上大家可以去找，後面陡上沒穿冰爪會滑成智障" },
+          { type: "photo", src: "1.jpg" },
+          { type: "photo", src: "2.jpg" },
+          { type: "photo", src: "3.jpg" },
+          { type: "photo", src: "4.jpg" },
+          { type: "photo", src: "5.jpg" },
+          { type: "photo", src: "6.jpg" }
+        ]
+      }
     ]
   },
   {
