@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxtrx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" creator="Hiking Logger v4.0.2 b327" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www8.garmin.com/xmlschemas/GpxExtensionsv3.xsd">
+<metadata>
+<name><![CDATA[2026-07-25_風美溪]]></name>
+<link href="www.ccmedia.com.tw">
+<text>Hiking Logger</text>
+</link>
+<time>2026-08-29T12:39:46Z</time>
+</metadata>
+<wpt lat="24.543002" lon="121.019173">
+<time>2026-08-29T12:37:04Z</time>
+<name><![CDATA[苦花潭瀑布（左岸高繞離溯）]]></name>
+<sym>Flag, Green</sym>
+</wpt>
+<wpt lat="24.545228" lon="121.028749">
+<ele>726.4</ele>
+<time>2026-07-25T02:12:28Z</time>
+<name><![CDATA[10M潭瀑 右岸高繞]]></name>
+<sym>Flag, Red</sym>
+</wpt>
+<wpt lat="24.544281" lon="121.025682">
+<ele>765.3</ele>
+<time>2026-07-25T03:12:11Z</time>
+<name><![CDATA[左岸高繞]]></name>
+<sym>Flag, Green</sym>
+</wpt>
+<wpt lat="24.544218" lon="121.025608">
+<ele>763</ele>
+<time>2026-07-25T03:13:43Z</time>
+<name><![CDATA[小潭]]></name>
+<sym>Flag, Red</sym>
+</wpt>
+<wpt lat="24.543679" lon="121.022408">
+<ele>853.6</ele>
+<time>2026-07-25T03:52:06Z</time>
+<name><![CDATA[石頭堵住原來的攀爬路線，先鋒攻右岸後回到左岸架繩]]></name>
+<sym>Flag, Red</sym>
+</wpt>
+<wpt lat="24.543946" lon="121.021576">
+<ele>820.5</ele>
+<time>2026-07-25T05:44:06Z</time>
+<name><![CDATA[左岸崩壁 高繞]]></name>
+<sym>Flag, Red</sym>
+</wpt>
+<wpt lat="24.542937" lon="121.018809">
+<ele>886.9</ele>
+<time>2026-07-25T07:15:04Z</time>
+<name><![CDATA[離溯]]></name>
+<sym>Flag, Red</sym>
+</wpt>
+</gpx>

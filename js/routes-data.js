@@ -176,7 +176,7 @@ const ROUTES = [
     name: "加九寮溪左股溯源高腰山",
     trips: [
       {
-        date: "",
+        date: "2024/10/11",
         members: ["張智勳", "劉承越", "陳裕豪"],
         support: [],
         groupPhoto: "group-photo.jpg",
@@ -208,7 +208,7 @@ const ROUTES = [
         startPoint: "",
         difficulty: "",
         mapImage: "",
-        gpx: "",
+        gpx: "track.gpx",
         entries: [
           { type: "photo", src: "1.jpg" },
           { type: "photo", src: "2.jpg" },
