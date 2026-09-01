@@ -525,6 +525,74 @@ footer.note a {
   text-decoration: underline;
 }
 
+/* ---------- 開發者想說的話 ---------- */
+.dev-note {
+  margin-top: 56px;
+  padding: 28px 30px;
+  background: var(--paper-dark);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+}
+
+.dev-note h2 {
+  font-family: 'Lihsianti', 'Noto Serif TC', serif;
+  font-weight: 400;
+  font-size: 26px;
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+
+.dev-note h3 {
+  font-family: 'Lihsianti', 'Noto Serif TC', serif;
+  font-weight: 700;
+  font-size: 17px;
+  margin: 24px 0 10px;
+  color: var(--rust);
+}
+
+.dev-note p {
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+
+.dev-note ul {
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+
+.dev-note li {
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.dev-note li strong {
+  color: var(--rust);
+}
+
+/* ---------- 免責聲明按鈕（路線頁） ---------- */
+.disclaimer-link {
+  display: block;
+  text-align: center;
+  font-family: 'Lihsianti Mono', 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--ink-soft);
+  border: 1px solid var(--paper-line);
+  border-radius: 999px;
+  padding: 10px 16px;
+  margin-top: 40px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.disclaimer-link:hover {
+  background: var(--paper-dark);
+  color: var(--rust);
+}
+
 footer.note {
   margin-top: 60px;
   text-align: center;
