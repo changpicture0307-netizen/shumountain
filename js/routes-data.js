@@ -258,7 +258,7 @@ const ROUTES = [
         startPoint: "",
         difficulty: "",
         mapImage: "",
-        gpx: "",
+        gpx: "track.gpx",
         entries: [
           { type: "photo", src: "1.jpg" },
           { type: "photo", src: "2.jpg" },
