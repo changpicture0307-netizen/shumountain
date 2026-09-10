@@ -350,6 +350,11 @@ section.block h3::before {
   box-shadow: 0 1px 3px rgba(39,56,50,0.06);
 }
 
+.entry-text a {
+  color: var(--river);
+  text-decoration: underline;
+}
+
 .entry-photo-grid {
   display: grid;
   grid-template-columns: repeat(var(--cols, 3), 1fr);

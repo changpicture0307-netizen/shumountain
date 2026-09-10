@@ -73,7 +73,8 @@ const ROUTES = [
           { type: "photo", src: "5.jpg" },
           { type: "photo", src: "6.jpg" },
           { type: "photo", src: "7.jpg" },
-          { type: "photo", src: "8.jpg" }
+          { type: "photo", src: "8.jpg" },
+          { type: "text", text: "活動照片：https://photos.app.goo.gl/1EVG8TRN2EsinHDm9" }
         ]
       }
     ]
@@ -191,7 +192,8 @@ const ROUTES = [
           { type: "photo", src: "3.jpg" },
           { type: "photo", src: "4.jpg" },
           { type: "photo", src: "5.jpg" },
-          { type: "photo", src: "6.jpg" }
+          { type: "photo", src: "6.jpg" },
+          { type: "text", text: "活動照片：https://photos.app.goo.gl/kZqJCkHmvnsHrPbZ8" }
         ]
       }
     ]
@@ -222,7 +224,8 @@ const ROUTES = [
           { type: "photo", src: "10.jpg" },
           { type: "photo", src: "11.jpg" },
           { type: "photo", src: "12.jpg" },
-          { type: "photo", src: "13.jpg" }
+          { type: "photo", src: "13.jpg" },
+          { type: "text", text: "活動照片：https://photos.app.goo.gl/x4zLcJeamEPsk75C9" }
         ]
       }
     ]
@@ -241,7 +244,8 @@ const ROUTES = [
         mapImage: "route-map.jpg",
         gpx: "",
         entries: [
-          { type: "text", text: "說明：智勳在當兵沒去到\n只知道馨儀把達波的刀弄丟了" }
+          { type: "text", text: "說明：智勳在當兵沒去到\n只知道馨儀把達波的刀弄丟了" },
+          { type: "text", text: "活動照片：https://photos.app.goo.gl/tpU8DfcaV3Sz3FX58" }
         ]
       }
     ]
@@ -266,7 +270,28 @@ const ROUTES = [
           { type: "photo", src: "4.jpg" },
           { type: "photo", src: "5.jpg" },
           { type: "photo", src: "6.jpg" },
-          { type: "photo", src: "7.jpg" }
+          { type: "photo", src: "7.jpg" },
+          { type: "text", text: "活動照片：https://photos.app.goo.gl/Ffq8cjva3S6DvdNQ9" }
+        ]
+      }
+    ]
+  },
+  {
+    slug: "paozilun",
+    name: "砲子崙",
+    trips: [
+      {
+        date: "2026/09/06",
+        members: ["智勳", "達波", "元泓", "米血", "育陞"],
+        support: [],
+        groupPhoto: "group-photo.jpg",
+        startPoint: "",
+        difficulty: "",
+        mapImage: "",
+        gpx: "",
+        entries: [
+          { type: "text", text: "09:30 世新出發\n10:20 整裝完畢出發\n12:17 準備回停車點\n12:43 換裝完畢去吃小漁村\n\n後面去了浩宇家的農場還有泡溫泉" },
+          { type: "text", text: "活動照片：https://photos.app.goo.gl/Kvx6PpXFP6rJaeQS8" }
         ]
       }
     ]

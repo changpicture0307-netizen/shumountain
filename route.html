@@ -56,6 +56,12 @@
       .replace(/>/g, "&gt;");
   }
 
+  function linkify(escapedStr) {
+    return escapedStr.replace(/https?:\/\/[^\s<]+/g, url =>
+      `<a href="${url}" target="_blank" rel="noopener">${url}</a>`
+    );
+  }
+
   function renderTrip() {
     const trip = route.trips[tripIndex];
     const idx = ROUTES.indexOf(route);
@@ -127,7 +133,7 @@
           photoRun.push(e);
         } else {
           flushPhotoRun();
-          blocks.push(`<p class="entry-text">${escapeHtml(e.text).replace(/\n/g, "<br>")}</p>`);
+          blocks.push(`<p class="entry-text">${linkify(escapeHtml(e.text)).replace(/\n/g, "<br>")}</p>`);
         }
       });
       flushPhotoRun();
