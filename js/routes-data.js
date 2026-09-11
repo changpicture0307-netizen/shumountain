@@ -278,7 +278,7 @@ const ROUTES = [
   },
   {
     slug: "paozilun",
-    name: "砲子崙",
+    name: "砲子崙瀑布",
     trips: [
       {
         date: "2026/09/06",
@@ -291,6 +291,9 @@ const ROUTES = [
         gpx: "",
         entries: [
           { type: "text", text: "09:30 世新出發\n10:20 整裝完畢出發\n12:17 準備回停車點\n12:43 換裝完畢去吃小漁村\n\n後面去了浩宇家的農場還有泡溫泉" },
+          { type: "photo", src: "1.jpg" },
+          { type: "photo", src: "2.jpg" },
+          { type: "photo", src: "3.jpg" },
           { type: "text", text: "活動照片：https://photos.app.goo.gl/Kvx6PpXFP6rJaeQS8" }
         ]
       }
