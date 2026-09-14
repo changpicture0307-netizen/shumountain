@@ -298,6 +298,25 @@ const ROUTES = [
         ]
       }
     ]
+  },
+  {
+    slug: "jiajiuliao-play",
+    name: "加九寮溪玩水",
+    trips: [
+      {
+        date: "2026/09/12",
+        members: ["張智勳", "林育陞", "沈芸瑋"],
+        support: [],
+        groupPhoto: "group-photo.jpg",
+        startPoint: "",
+        difficulty: "",
+        mapImage: "",
+        gpx: "",
+        entries: [
+          { type: "text", text: "回顧照片連結：https://photos.app.goo.gl/N4PkUsUhqqnjpw6u6" }
+        ]
+      }
+    ]
   }
 ];
 
