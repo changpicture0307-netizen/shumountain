@@ -9,6 +9,7 @@ css/style.css         樣式
 fonts/                粒線體字型檔（proportional / monospaced）
 js/routes-data.js     所有路線資料，之後補資訊都改這個檔案就好
 js/changelog-data.js  更新日誌資料
+js/wishlist-data.js   願望清單資料（想去但還沒去的路線）
 images/<slug>/tripN/  每條路線「第 N 次造訪」的圖片放這裡
 ```
 
@@ -69,6 +70,20 @@ images/<slug>/tripN/  每條路線「第 N 次造訪」的圖片放這裡
 
 ## 怎麼新增一條路線
 複製 `routes-data.js` 裡任一個路線物件，貼上、改內容，`slug` 記得取一個新的英文代稱（不要跟別條路線重複），`trips` 至少要有一筆（可以先留空），首頁會自動出現新的印章卡片。
+
+## 怎麼用願望清單
+打開 `js/wishlist-data.js`，把想去的路線名字加進 `WISHLIST` 陣列：
+
+```js
+const WISHLIST = [
+  { name: "梅花溪", note: "" },
+  { name: "哈盆溪", note: "聽說水很漂亮" }
+];
+```
+
+`note` 是選填備註，不寫就留空字串。
+
+**自動結案機制：** 只要你之後在 `routes-data.js` 新增一條「名字完全一樣」的路線，願望清單就會自動把它從「待完成」移到下方的「已完成」區（打勾、劃掉、還能點進該路線頁），**你不用手動去刪願望清單**。所以新增路線時，`name` 記得跟願望清單寫的一模一樣就會自動對上。
 
 ## 怎麼寫更新日誌
 打開 `js/changelog-data.js`，在 `CHANGELOG` 陣列**最上面**（第一項）新增一筆：

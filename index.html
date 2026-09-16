@@ -37,6 +37,13 @@
 
   <div class="stamp-grid" id="stampGrid"></div>
 
+  <section class="wishlist" id="wishlist">
+    <h2>🎯 願望清單</h2>
+    <p class="wishlist-sub">想去但還沒去過的路線。等哪天真的去了、紀錄加進網站，這裡就會自動打勾結案。</p>
+    <div id="wishlistPending"></div>
+    <div id="wishlistDone"></div>
+  </section>
+
   <footer class="note">已收錄 <span id="routeCount"></span> 條路線 · 點選路線查看詳細紀錄 · <a href="changelog.html">更新日誌</a></footer>
 
   <section class="dev-note" id="developer-note">
@@ -63,6 +70,7 @@
 </div>
 
 <script src="js/routes-data.js"></script>
+<script src="js/wishlist-data.js"></script>
 <script>
   const grid = document.getElementById("stampGrid");
 
@@ -89,6 +97,35 @@
   });
 
   document.getElementById("routeCount").textContent = ROUTES.length;
+
+  // ---- 願望清單 ----
+  const pending = getPendingWishlist();
+  const completed = getCompletedWishlist();
+  const pendingEl = document.getElementById("wishlistPending");
+  const doneEl = document.getElementById("wishlistDone");
+
+  if (pending.length) {
+    pendingEl.innerHTML = `<ul class="wish-list">` + pending.map(w => `
+      <li class="wish-item">
+        <span class="wish-box">☐</span>
+        <span class="wish-name">${w.name}</span>
+        ${w.note ? `<span class="wish-note">${w.note}</span>` : ""}
+      </li>
+    `).join("") + `</ul>`;
+  } else {
+    pendingEl.innerHTML = `<div class="wish-empty">願望清單清空了，該想想下一條要去哪了。</div>`;
+  }
+
+  if (completed.length) {
+    doneEl.innerHTML = `
+      <div class="wish-done-head">已完成 ${completed.length} 個願望</div>
+      <ul class="wish-list wish-list-done">` + completed.map(w => `
+        <li class="wish-item done">
+          <span class="wish-box">☑</span>
+          <a class="wish-name" href="route.html?r=${w.route.slug}">${w.name}</a>
+        </li>
+      `).join("") + `</ul>`;
+  }
 </script>
 
 </body>
